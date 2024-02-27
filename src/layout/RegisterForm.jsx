@@ -15,7 +15,9 @@ export default function RegisterForm() {
     email: '',
     password: '',
     phone: '',
-    Role: 'User',
+    role: 'User',
+    position: 'employee',
+    status: 'working',
   });
 
   const hdlChange = e => {
