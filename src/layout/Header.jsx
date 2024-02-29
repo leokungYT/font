@@ -84,7 +84,7 @@ export default function Nav() {
            </li>
               )}
                <li>
-              <Link to="#" onClick={handleLogout} className="menu menu-horizontal text-lg flex gap-2 items-center"><SlLogin />Logout</Link>
+              <Link to="#" onClick={handleLogout} className="flex items-center gap-2"><SlLogin />Logout</Link>
               </li>
             </ul>
           )}
