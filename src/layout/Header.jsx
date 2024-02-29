@@ -53,41 +53,71 @@ export default function Nav() {
                     </Link>
                   </li>
                 ))}
-                {user?.id && (
-                  <li className="inline-block">
-                  <a href="https://www.facebook.com/profile.php?id=100078116817045" className="menu menu-horizontal text-lg flex gap-2 items-center">
-                    <FaPhoneAlt />
-                    ติดต่อ
-                  </a>                  </li>
-                )}
-                <li className="inline-block">
-                <Link to="#" onClick={handleLogout}><SlLogin />Logout</Link>
-                </li>
+                  {user?.id && (
+                    <>
+                      <li className="inline-block">
+                        <a href="https://www.facebook.com/profile.php?id=100078116817045" className="menu menu-horizontal text-lg flex gap-2 items-center">
+                          <FaPhoneAlt />
+                          ติดต่อ
+                        </a>                  
+                      </li>
+                      <li className="inline-block">
+                        <Link to="#" onClick={handleLogout}><SlLogin />Logout</Link>
+                      </li>
+                    </>
+                  )}
+                  {!user?.id && (
+                    <>
+                      <li className="inline-block">
+                        <a href="https://www.facebook.com/profile.php?id=100078116817045" className="menu menu-horizontal text-lg flex gap-2 items-center">
+                          <FaPhoneAlt />
+                          ติดต่อ
+                        </a>                  
+                      </li>
+                    </>
+                  )}
               </ul>
             </div>
           </div>
 
           {/*responsive */}
           {isMenuOpen && (
-            <ul className='flex-col md:flex-row md:hidden p-4 mr-2'>
-              {finalNav.map((el) => (
-                <li key={el.to} className="inline-block">
-                  <Link to={el.to} className='flex items-center gap-2'><SlLogin />{el.text}</Link>
-                </li>
-              ))}
-              {user?.id && (
-             <li className="inline-block">
-             <a href="https://www.facebook.com/profile.php?id=100078116817045" className="menu menu-horizontal text-lg flex gap-2 items-center">
-               <FaPhoneAlt />
-               ติดต่อ
-             </a>
-           </li>
-              )}
-               <li>
-              <Link to="#" onClick={handleLogout} className="flex items-center gap-2"><SlLogin />Logout</Link>
-              </li>
-            </ul>
-          )}
+  <ul className='flex-col md:flex-row md:hidden p-4 mr-2'>
+    {!user?.id ? (
+      <>
+        <li className="">
+          <a href="https://www.facebook.com/profile.php?id=100078116817045" className="menu menu-horizontal text-lg flex gap-2 items-center">
+            <FaPhoneAlt />
+            ติดต่อ
+          </a>
+        </li>
+        {finalNav.map((el) => (
+          <li key={el.to} className="">
+            <Link to={el.to} className='menu menu-horizontal text-lg flex gap-2 items-center'>
+              <SlLogin />{el.text}
+            </Link>
+          </li>
+        ))}
+      </>
+    ) : (
+      <>
+        <li className="">
+          <a href="https://www.facebook.com/profile.php?id=100078116817045" className="menu menu-horizontal text-lg flex gap-2 items-center">
+            <FaPhoneAlt />
+            ติดต่อ
+          </a>
+        </li>
+        <li className="">
+          <Link to="#" onClick={handleLogout} className="menu menu-horizontal text-lg flex gap-2 items-center">
+            <SlLogin />Logout
+          </Link>
+        </li>
+      </>
+    )}
+  </ul>
+)}
+
+
         </nav>
 
   );
